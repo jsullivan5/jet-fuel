@@ -35,10 +35,11 @@ const handleFolderSubmit = (event) => {
     headers: { "Content-Type": "application/json" }
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log(data);
+    $('#folders-display').prepend(`<p>${data.name}</p>`)
+  })
   .catch(error => console.log(error))
 }
-
-
 
 $('#folder-submit').click(handleFolderSubmit)

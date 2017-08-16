@@ -30,9 +30,10 @@ app.post('/api/v1/folders', (request, response) => {
     }
   }
 
-  database('folders').insert(newFolder, 'id')
+  database('folders').insert(newFolder, 'name')
     .then(folder => {
-      response.status(201).json({ id: folder[0] })
+      console.log(folder)
+      response.status(201).json({ name: folder[0] })
     })
     .catch(error => {
       response.status(500).json({ error })
