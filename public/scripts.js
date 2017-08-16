@@ -31,7 +31,7 @@ const handleFolderSubmit = (event) => {
 
   fetch('/api/v1/folders', {
     method: 'POST',
-    body: JSON.stringify({name: var}),
+    body: JSON.stringify(name),
     headers: { "Content-Type": "application/json" }
   })
   .then(response => response.json())
