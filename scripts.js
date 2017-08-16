@@ -13,7 +13,7 @@ const prependNewLink = (event) => {
   const userInputs = getNewLinkInputs()
   console.log('working', userInputs.name);
 
-  $('user-links').prepend(`<a href="#">${userInputs.name}</a>`)
+  $('#user-links').prepend(`<a href="#">${userInputs.name}</a>`)
 }
 
 $('#new-link-submit').click(prependNewLink)
