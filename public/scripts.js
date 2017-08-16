@@ -20,17 +20,23 @@ const prependNewLink = (event) => {
 $('#new-link-submit').click(prependNewLink);
 
 const getNewFolderName = () => {
-  const name = $('#folder-name').val();
+  const nameValue = $('#folder-name').val();
 
-  return name
+  return { name: nameValue }
 }
 
 const handleFolderSubmit = (event) => {
   event.preventDefault();
   const name = getNewFolderName()
 
-  console.log('working')
-  fetch('./api/v1/folders', { method: 'POST', body: name})
+  fetch('/api/v1/folders', {
+    method: 'POST',
+    body: JSON.stringify({name: var}),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error))
 }
 
 
