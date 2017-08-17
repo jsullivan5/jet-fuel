@@ -14,10 +14,21 @@ app.locals.folders = {}
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (request, response) => {
   response.sendFile(__dirname + '/index.html')
 });
+
+app.get('/api/v1/folders', (request, response) => {
+  database('folders').select('*')
+    .then(folders => {
+      response.status(200).json(folders);
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    })
+})
 
 app.post('/api/v1/folders', (request, response) => {
   const newFolder = request.body;
@@ -29,6 +40,8 @@ app.post('/api/v1/folders', (request, response) => {
       });
     }
   }
+
+
 
   database('folders').insert(newFolder, 'name')
     .then(folder => {

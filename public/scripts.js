@@ -1,3 +1,16 @@
+$(document).ready(() => {
+  fetch('api/v1/folders')
+    .then(response => response.json())
+    .then(data => displayFolders(data))
+})
+
+const displayFolders = (data) => {
+  data.forEach(folder => {
+    console.log(folder)
+    $('#folders-display').append(`<p id=${folder.id}>${folder.name}</p>`)
+  })
+}
+
 
 const getNewLinkInputs = () => {
   const name = $('#new-link-name').val();
