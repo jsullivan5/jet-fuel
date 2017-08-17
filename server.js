@@ -41,8 +41,6 @@ app.post('/api/v1/folders', (request, response) => {
     }
   }
 
-
-
   database('folders').insert(newFolder, 'name')
     .then(folder => {
       console.log(folder)

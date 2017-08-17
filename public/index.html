@@ -10,15 +10,20 @@
     <header>
       <h1>Jet Fuel</h1>
       <form id="new-link" action="index.html" method="post">
-        <label for="name">
-          Name:
-          <input id="new-link-name" type="text" name="name" value="">
-        </label>
         <label for="link">
           Link:
           <input id="new-link-link" type="text" name="link" value="">
-        <input id="new-link-submit" type="submit" name="Create New Link" value="">
         </label>
+        <label for="description">
+          Description:
+          <input id="new-link-name" type="text" name="description" value="">
+        </label>
+        <select id="folder-select" name="folder-select">
+          <option value="Select a Folder">Select a Folder</option>
+        </select>
+        <div id="button-wrapper">
+          <input id="new-link-submit" type="submit" name="create-new-link" value="Create New Link">
+        </div>
       </form>
     </header>
     <main>

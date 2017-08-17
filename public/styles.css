@@ -30,6 +30,17 @@ header input {
   height: 20px;
 }
 
+#folder-select {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+#button-wrapper {
+  margin-top: 10px;
+  text-align: center;
+}
+
 nav {
   text-align: center;
   margin: 20px 0;
