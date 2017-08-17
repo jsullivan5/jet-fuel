@@ -68,9 +68,14 @@ const handleFolderChange = () => {
   fetch(`/api/v1/folders/${folderId}/links`)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       data.forEach((link) => {
-        // TODO: insert prepend for links here.
+        $('#user-links').prepend(`
+            <div class="card">
+              <p>${link.description}</p>
+              <p>${link.short_URL}</p>
+              <p>${link.created_at}</p>
+            </div>
+          `);
       });
     })
     .catch(error => console.log(error))

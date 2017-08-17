@@ -46,8 +46,33 @@ const getFolderLinks = (request, response) => {
     })
 }
 
+const createNewLink = (req, res) => {
+  const shortURL = `http://jt.fl/${shortHash(req.body.long_URL)}`
+
+  const formattedData = Object.assign(req.body, {
+    short_URL: shortURL
+  });
+
+  console.log(formattedData);
+
+  for (let requiredParams of ['long_URL', 'short_URL', 'folder_id', 'description']) {
+    if (!formattedData[requiredParams]) {
+      return res.status(422).json({
+        error: `Missing required parameter ${requiredParams}.`
+      })
+    }
+  }
+
+  database('links').insert(formattedData, '*')
+    .then(link => {
+      res.status(201).json(link[0])
+    })
+    .catch(error => response.status(500).json({ error }))
+}
+
 module.exports = {
   getFolders: getFolders,
   newFolder: newFolder,
-  getFolderLinks: getFolderLinks
+  getFolderLinks: getFolderLinks,
+  createNewLink: createNewLink
 };

@@ -4,7 +4,7 @@ const controller = require('./controller');
 
 router.get('/v1/folders', controller.getFolders)
 router.post('/v1/folders', controller.newFolder);
-
-router.get('/v1/folders/:id/links', controller.getFolderLinks)
+router.get('/v1/folders/:id/links', controller.getFolderLinks);
+router.post('/v1/links', controller.createNewLink)
 
 module.exports = router;
