@@ -35,7 +35,18 @@ const newFolder = (request, response) => {
     });
 }
 
+const getFolderLinks = (request, response) => {
+  database('links').where('folder_id', request.params.id).select()
+    .then(links => {
+      response.status(200).json(links);
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
+}
+
 module.exports = {
   getFolders: getFolders,
-  newFolder: newFolder
+  newFolder: newFolder,
+  getFolderLinks: getFolderLinks
 };

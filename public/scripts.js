@@ -6,7 +6,7 @@ $(document).ready(() => {
 
 const displayFolders = (data) => {
   data.forEach(folder => {
-    $('#folder-select').append(`<option id=${folder.id} value=${folder.name.replace(/\s+/g, '')}>${folder.name}</option>`)
+    $('#folder-select').append(`<option id=${folder.id} value=${folder.id}>${folder.name}</option>`)
   })
 }
 
@@ -49,7 +49,7 @@ const handleFolderSubmit = (event) => {
   .then(response => response.json())
   .then(data => {
     console.log(data.name);
-    $('#folder-select').append(`<option id=${data.id} value=${data.name.replace(/\s+/g, '')}>${data.name}</option>`)
+    $('#folder-select').append(`<option id=${data.id} value=${data.id}>${data.name}</option>`)
   })
   .catch(error => console.log(error))
 }

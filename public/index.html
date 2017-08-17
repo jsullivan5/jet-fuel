@@ -18,6 +18,13 @@
           Description:
           <input id="new-link-name" type="text" name="description" value="">
         </label>
+        <form id="new-folder" action="index.html" method="post">
+          <label for="create-folder">
+            Create New Folder:
+            <input id="folder-name" type="text" name="create-folder" value="">
+            <input id="folder-submit" type="submit" name="create-folder" value="">
+          </label>
+        </form>
         <select id="folder-select" name="folder-select">
           <option value="Select a Folder">Select a Folder</option>
         </select>
@@ -33,17 +40,6 @@
         <button type="button" name="button">New Folder</button>
       </nav> -->
       <div class="user-data-wrapper">
-        <section id="user-folders">
-          <form id="new-folder" action="index.html" method="post">
-            <label for="name">
-              Name:
-              <input id="folder-name" type="text" name="name" value="">
-              <input id="folder-submit" type="submit" name="name" value="">
-            </label>
-          </form>
-          <div id="folders-display">
-          </div>
-        </section>
         <section id="user-links">
           <p>mock links</p>
           <p>mock links</p>
