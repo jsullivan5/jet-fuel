@@ -1,6 +1,7 @@
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
+const shortHash = require('short-hash');
 
 const getFolders = (request, response) => {
   database('folders').select('*')
