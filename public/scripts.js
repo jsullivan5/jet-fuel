@@ -55,3 +55,27 @@ const handleFolderSubmit = (event) => {
 }
 
 $('#folder-submit').click(handleFolderSubmit)
+
+const getFolderVal = () => {
+  const folderId = $('#folder-select').val()
+
+  return folderId
+}
+
+const handleFolderChange = () => {
+  const folderId = getFolderVal()
+
+  fetch(`/api/v1/folders/${folderId}/links`)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      data.forEach((link) => {
+        // TODO: insert prepend for links here.
+      });
+    })
+    .catch(error => console.log(error))
+
+}
+
+
+$('#folder-select').change(handleFolderChange)
