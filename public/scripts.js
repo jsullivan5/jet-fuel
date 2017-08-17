@@ -48,7 +48,7 @@ const handleFolderSubmit = (event) => {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
+    console.log(data.name);
     $('#folder-select').append(`<option id=${data.id} value=${data.name.replace(/\s+/g, '')}>${data.name}</option>`)
   })
   .catch(error => console.log(error))
