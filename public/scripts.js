@@ -10,31 +10,6 @@ $('#folder-select').change(handleFolderChange);
 $('#new-link-submit').click(createLink);
 $('#folder-submit').click(handleFolderSubmit);
 
-// Get input values
-
-function getNewLinkInputs() {
-  const name = $('#new-link-name').val();
-  const link = $('#new-link-link').val();
-
-  return {
-    name,
-    link
-  }
-}
-
-function getNewFolderName() {
-  const nameValue = $('#folder-name').val();
-
-  return { name: nameValue }
-}
-
-
-function getFolderVal(){
-  const folderId = $('#folder-select').val()
-
-  return folderId
-}
-
 // Folder functions
 
 function displayFolders(data) {
@@ -59,7 +34,11 @@ function handleFolderSubmit(event) {
   .then(response => response.json())
   .then(data => {
     console.log(data.name);
-    $('#folder-select').append(`<option id=${data.id} value=${data.id}>${data.name}</option>`)
+    $('#folder-select').append(`
+      <option id=${data.id} value=${data.id}>
+        ${data.name}
+      </option>`);
+    clearInputs($('#folder-name'))
   })
   .catch(error => console.log(error))
 }
@@ -112,6 +91,39 @@ function createLink() {
             <p>${link.created_at}</p>
           </div>
         `);
+      clearInputs($('#new-link-link'))
+      clearInputs($('#new-link-name'))
     })
     .catch(error => console.log(error))
+}
+
+// Get input values
+
+function getNewLinkInputs() {
+  const name = $('#new-link-name').val();
+  const link = $('#new-link-link').val();
+
+  return {
+    name,
+    link
+  }
+}
+
+function getNewFolderName() {
+  const nameValue = $('#folder-name').val();
+
+  return { name: nameValue }
+}
+
+
+function getFolderVal(){
+  const folderId = $('#folder-select').val()
+
+  return folderId
+}
+
+// Helper functions
+
+function clearInputs(input) {
+  input.val('')
 }
