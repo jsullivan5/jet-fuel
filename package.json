@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "chai": "^4.1.1",
-    "chai-http": "^3.0.0",
     "express": "^4.15.4",
     "fetch": "^1.1.0",
     "knex": "^0.13.0",
@@ -19,11 +17,13 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "chai": "^4.1.1"
   },
   "engines": {
-    "node": "0.10.12",
-    "npm": "1.2.30"
+    "node": "6.9.4",
+    "npm": "3.10.10"
   },
   "scripts": {
     "test": "mocha",
