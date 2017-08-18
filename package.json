@@ -1,0 +1,43 @@
+{
+  "name": "jet-fuel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "knexfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "express": "^4.15.4",
+    "fetch": "^1.1.0",
+    "knex": "^0.13.0",
+    "nodemon": "^1.11.0",
+    "pg": "^7.1.2",
+    "short-hash": "^1.0.0",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  },
+  "engines": {
+    "node": "0.10.12",
+    "npm": "1.2.30"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsullivan5/jet-fuel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsullivan5/jet-fuel/issues"
+  },
+  "homepage": "https://github.com/jsullivan5/jet-fuel#readme"
+}
