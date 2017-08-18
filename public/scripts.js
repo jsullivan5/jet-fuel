@@ -4,18 +4,15 @@ $(document).ready(() => {
     .then(data => displayFolders(data))
 })
 
-const displayFolders = (data) => {
-  data.forEach(folder => {
-    $('#folder-select').append(`
-      <option id=${folder.id} value=${folder.id}>
-        ${folder.name}
-      </option>
-    `)
-  })
-}
+// Event Listeners
 
+$('#folder-select').change(handleFolderChange);
+$('#new-link-submit').click(createLink);
+$('#folder-submit').click(handleFolderSubmit);
 
-const getNewLinkInputs = () => {
+// Get input values
+
+function getNewLinkInputs() {
   const name = $('#new-link-name').val();
   const link = $('#new-link-link').val();
 
@@ -25,23 +22,32 @@ const getNewLinkInputs = () => {
   }
 }
 
-const prependNewLink = (event) => {
-  event.preventDefault();
-  const userInputs = getNewLinkInputs()
-  console.log('working', userInputs.name);
-
-  $('#user-links').prepend(`<a href="#">${userInputs.name}</a>`)
-}
-
-// $('#new-link-submit').click(prependNewLink);
-
-const getNewFolderName = () => {
+function getNewFolderName() {
   const nameValue = $('#folder-name').val();
 
   return { name: nameValue }
 }
 
-const handleFolderSubmit = (event) => {
+
+function getFolderVal(){
+  const folderId = $('#folder-select').val()
+
+  return folderId
+}
+
+// Folder functions
+
+function displayFolders(data) {
+  data.forEach(folder => {
+    $('#folder-select').append(`
+      <option id=${folder.id} value=${folder.id}>
+        ${folder.name}
+      </option>
+    `)
+  })
+}
+
+function handleFolderSubmit(event) {
   event.preventDefault();
   const name = getNewFolderName()
 
@@ -58,15 +64,7 @@ const handleFolderSubmit = (event) => {
   .catch(error => console.log(error))
 }
 
-$('#folder-submit').click(handleFolderSubmit)
-
-const getFolderVal = () => {
-  const folderId = $('#folder-select').val()
-
-  return folderId
-}
-
-const handleFolderChange = () => {
+function handleFolderChange() {
   const folderId = getFolderVal()
 
   if (folderId === 0) {
@@ -91,8 +89,6 @@ const handleFolderChange = () => {
 }
 
 
-$('#folder-select').change(handleFolderChange)
-$('#new-link-submit').click(createLink)
 
 function createLink() {
   const folderId = getFolderVal();
