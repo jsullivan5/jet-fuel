@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./router');
+const router = require('./server/router');
 const app = express();
 
 // Database confiuguration
 const environment = process.env.NODE_ENV || 'development';
-const configuration = require('../knexfile')[environment];
+const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 
 app.set('port', process.env.PORT || 3000);
