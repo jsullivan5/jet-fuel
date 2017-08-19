@@ -3,38 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>Jet Fuel</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <header>
-      <h1>Jet Fuel</h1>
-      <form id="new-link" action="index.html" method="post">
-        <label for="link">
-          Link:
-          <input id="new-link-link" type="url" name="link" value="" placeholder="http://www.example.com">
-          <div class="url-error">
-            <p>Please use format: http://www.example.com</p>
-          </div>
-        </label>
-        <label for="description">
-          Description:
-          <input id="new-link-name" type="text" name="description" value="">
-        </label>
-        <div id="button-wrapper">
-          <input id="new-link-submit" type="submit" name="create-new-link" value="Create New Link">
-        </div>
-      </form>
-        <form id="new-folder" action="index.html" method="post">
-          <label for="create-folder">
-            Create New Folder:
-            <input id="folder-name" type="text" name="create-folder" value="">
-            <input id="folder-submit" type="submit" name="create-folder" value="Create New Folder">
+      <div id="header-wrapper">
+        <div id="logo-wrapper">
+          <h1>Jet <span>Fuel</span></h1>
+          <img src="airplane.svg" alt="airplane icon" id="logo">
+      </div>
+        <form id="new-link" action="index.html" method="post">
+          <label for="link">
+            Link:
+            <input id="new-link-link" type="url" name="link" value="" placeholder="http://www.example.com">
+            <div class="url-error">
+              <p>Please use format: http://www.example.com</p>
+            </div>
           </label>
-        <select id="folder-select" name="folder-select">
-          <option value="0">Select a Folder</option>
-        </select>
-      </form>
+          <label for="description">
+            Description:
+            <input id="new-link-name" type="text" name="description" value="">
+          </label>
+          <div id="button-wrapper">
+            <input id="new-link-submit" type="submit" name="create-new-link" value="Create New Link">
+          </div>
+        </form>
+          <form id="new-folder" action="index.html" method="post">
+            <label for="create-folder">
+              Create New Folder:
+              <input id="folder-name" type="text" name="create-folder" value="">
+            </label>
+            <input id="folder-submit" type="submit" name="create-folder" value="Create New Folder">
+          <select id="folder-select" name="folder-select">
+            <option value="0">Select a Folder</option>
+          </select>
+        </form>
+      </div>
     </header>
     <main>
       <div class="user-data-wrapper">

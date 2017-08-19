@@ -1,18 +1,47 @@
-html, body {
+/*color scheme
+prussian blue: #0B3C5D
+yellow: #D9B310
+light blue: #328CC1
+ivory black: #1D2731 */
+
+* {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 
 header {
-  background-color: lightblue;
+  background-color: #0B3C5D;
   text-align: center;
   padding: 20px;
   margin-bottom: 30px;
 }
 
+#header-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+
+#header-wrapper input[type=submit] {
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
-  font-size: 3em;
-  margin: 0 0 20px 0;
+  display: inline;
+  font-size: 43px;
+  margin: 0 10px 20px 0;
+  color: #FFF;
+}
+
+h1 span {
+  color: #D9B310;
+}
+
+#logo {
+  width: 30px
 }
 
 header form {
@@ -20,14 +49,16 @@ header form {
 }
 
 label {
+  color: #FFF;
   display: block;
   margin: 10px auto;
   width: 200px;
 }
 
 header input {
-  width: 200px;
+  width: 100%;
   height: 20px;
+  align-self: center;
 }
 
 .url-error {
@@ -35,9 +66,15 @@ header input {
   text-align: center;
 }
 
+input[type=submit] {
+  border: 2px solid #1D2731;
+  background-color: #D9B310;
+  color: #1D2731;
+}
+
 #folder-select {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 200px;
 }
 
@@ -46,9 +83,8 @@ header input {
   text-align: center;
 }
 
-nav {
-  text-align: center;
-  margin: 20px 0;
+main {
+  height: 50%;
 }
 
 .user-data-wrapper {
@@ -57,10 +93,17 @@ nav {
 }
 
 section {
-  background-color: lightgray;
-  border: 1px solid black;
   padding: 15px;
-  overflow-y: scroll;
+
+}
+
+.card {
+  background-color: #1D2731;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 20px 0;
 }
 
 #user-folders {
@@ -69,4 +112,6 @@ section {
 
 #user-links {
   width: 600px;
+  height: 50vh;
+  overflow-y: scroll;
 }
