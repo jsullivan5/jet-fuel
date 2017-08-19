@@ -12,7 +12,10 @@
       <form id="new-link" action="index.html" method="post">
         <label for="link">
           Link:
-          <input id="new-link-link" type="text" name="link" value="">
+          <input id="new-link-link" type="url" name="link" value="" placeholder="http://www.example.com">
+          <div class="url-error">
+            <p>Please use format: http://www.example.com</p>
+          </div>
         </label>
         <label for="description">
           Description:

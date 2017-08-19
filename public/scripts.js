@@ -37,8 +37,9 @@ function handleFolderSubmit(event) {
     $('#folder-select').append(`
       <option id=${data.id} value=${data.id}>
         ${data.name}
-      </option>`);
-    clearInputs($('#folder-name'))
+      </option>
+    `);
+    clearInputs($('#folder-name'));
   })
   .catch(error => console.log(error))
 }
@@ -46,7 +47,7 @@ function handleFolderSubmit(event) {
 function handleFolderChange() {
   const folderId = getFolderVal()
 
-  clearLinkCards()
+  removeDomNode($('.card'))
 
   if (folderId === 0) {
     return
@@ -76,6 +77,12 @@ function createLink() {
   const folderId = getFolderVal();
   const linkInputs = getNewLinkInputs();
 
+  if (!validateURL(linkInputs.link)) {
+    clearInputs($('#new-link-link'))
+    $('.url-error').show()
+    return
+  }
+
   fetch('/api/v1/links', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -94,8 +101,9 @@ function createLink() {
             <p>${link.created_at}</p>
           </div>
         `);
-      clearInputs($('#new-link-link'))
-      clearInputs($('#new-link-name'))
+      clearInputs($('#new-link-link'));
+      clearInputs($('#new-link-name'));
+      $('.url-error').hide();
     })
     .catch(error => console.log(error))
 }
@@ -131,6 +139,16 @@ function clearInputs(input) {
   input.val('');
 }
 
-function clearLinkCards() {
-  $('.card').remove();
+function removeDomNode(input) {
+  input.remove();
+}
+
+function validateURL(url) {
+  const regEx = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
+
+  if (!regEx.test(url)) {
+    return false;
+  } else {
+    return true
+  }
 }

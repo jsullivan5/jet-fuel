@@ -30,6 +30,11 @@ header input {
   height: 20px;
 }
 
+.url-error {
+  display: none;
+  text-align: center;
+}
+
 #folder-select {
   display: block;
   margin: 0 auto;
