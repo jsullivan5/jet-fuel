@@ -40,6 +40,7 @@ function handleFolderSubmit(event) {
       </option>
     `);
     clearInputs($('#folder-name'));
+    $('#folder-select').val(`${data.id}`)
   })
   .catch(error => console.log(error))
 }
@@ -58,19 +59,16 @@ function handleFolderChange() {
     .then((data) => {
       data.forEach((link) => {
         $('#user-links').prepend(`
-            <div class="card">
-              <p>${link.description}</p>
-              <p>${link.short_URL}</p>
-              <p>${link.created_at}</p>
-            </div>
-          `);
+          <div class="card">
+            <p>${link.description}</p>
+            <p>${link.short_URL}</p>
+            <p>${link.created_at}</p>
+          </div>
+        `);
       });
     })
     .catch(error => console.log(error))
-
 }
-
-
 
 function createLink() {
   event.preventDefault();
