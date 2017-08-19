@@ -65,9 +65,10 @@ const createNewLink = (req, res) => {
 
   database('links').insert(formattedData, '*')
     .then(link => {
+      console.log(link[0]);
       res.status(201).json(link[0])
     })
-    .catch(error => response.status(500).json({ error }))
+    .catch(error => res.status(500).json({ error }))
 }
 
 module.exports = {

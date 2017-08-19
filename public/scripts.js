@@ -70,6 +70,7 @@ function handleFolderChange() {
 
 
 function createLink() {
+  event.preventDefault();
   const folderId = getFolderVal();
   const linkInputs = getNewLinkInputs();
 
