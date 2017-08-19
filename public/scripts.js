@@ -46,6 +46,8 @@ function handleFolderSubmit(event) {
 function handleFolderChange() {
   const folderId = getFolderVal()
 
+  clearLinkCards()
+
   if (folderId === 0) {
     return
   }
@@ -126,5 +128,9 @@ function getFolderVal(){
 // Helper functions
 
 function clearInputs(input) {
-  input.val('')
+  input.val('');
+}
+
+function clearLinkCards() {
+  $('.card').remove();
 }
