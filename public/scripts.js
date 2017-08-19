@@ -78,6 +78,7 @@ function createLink() {
   if (!validateURL(linkInputs.link)) {
     clearInputs($('#new-link-link'))
     $('.url-error').show()
+    $('#new-link-link').focus()
     return
   }
 
