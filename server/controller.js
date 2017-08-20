@@ -65,15 +65,28 @@ const createNewLink = (req, res) => {
 
   database('links').insert(formattedData, '*')
     .then(link => {
-      console.log(link[0]);
       res.status(201).json(link[0])
     })
     .catch(error => res.status(500).json({ error }))
+}
+
+const redirectUrl = (request, response) => {
+  database('links').where({
+    short_URL: `http://jt.fl/${request.params.charHash}`
+  })
+    .select('long_URL')
+      .then(data => {
+        response.redirect(`${data[0].long_URL}`);
+      })
+      .catch(error => {
+        response.status(404).json({ error });
+      });
 }
 
 module.exports = {
   getFolders: getFolders,
   newFolder: newFolder,
   getFolderLinks: getFolderLinks,
-  createNewLink: createNewLink
+  createNewLink: createNewLink,
+  redirectUrl: redirectUrl
 };

@@ -10,6 +10,10 @@ $(document).ready(() => {
 $('#folder-select').change(handleFolderChange);
 $('#new-link-submit').click(createLink);
 $('#folder-submit').click(handleFolderSubmit);
+$('a').click(function(event) {
+  event.preventDefault()
+  console.log('clicked')
+})
 
 // Folder functions
 
@@ -62,7 +66,9 @@ function handleFolderChange() {
         $('#user-links').prepend(`
           <div class="card">
             <p>${link.description}</p>
-            <p>${link.short_URL}</p>
+            <a href="/${link.short_URL}" class="short-link">
+              ${link.short_URL}
+            </a>
             <p>${formatDate(link.created_at)}</p>
           </div>
         `);
@@ -97,7 +103,9 @@ function createLink() {
       $('#user-links').prepend(`
           <div class="card">
             <p>${link.description}</p>
-            <p>${link.short_URL}</p>
+            <a href="/${link.short_URL}" class="short-link">
+              ${link.short_URL}
+            </a>
             <p>${formatDate(link.created_at)}</p>
           </div>
         `);
@@ -106,6 +114,11 @@ function createLink() {
       $('.url-error').hide();
     })
     .catch(error => console.log(error))
+}
+
+function shortLinkClick(event) {
+  event.preventDefault()
+  console.log('click event handler')
 }
 
 // Get input values
