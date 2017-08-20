@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
   fetch('api/v1/folders')
     .then(response => response.json())
@@ -62,7 +63,7 @@ function handleFolderChange() {
           <div class="card">
             <p>${link.description}</p>
             <p>${link.short_URL}</p>
-            <p>${link.created_at}</p>
+            <p>${formatDate(link.created_at)}</p>
           </div>
         `);
       });
@@ -97,7 +98,7 @@ function createLink() {
           <div class="card">
             <p>${link.description}</p>
             <p>${link.short_URL}</p>
-            <p>${link.created_at}</p>
+            <p>${formatDate(link.created_at)}</p>
           </div>
         `);
       clearInputs($('#new-link-link'));
@@ -150,4 +151,8 @@ function validateURL(url) {
   } else {
     return true
   }
+}
+
+function formatDate(date) {
+  return moment(date).format('MMMM Do YYYY, h:mm a');
 }
