@@ -10,10 +10,6 @@ $(document).ready(() => {
 $('#folder-select').change(handleFolderChange);
 $('#new-link-submit').click(createLink);
 $('#folder-submit').click(handleFolderSubmit);
-$('a').click(function(event) {
-  event.preventDefault()
-  console.log('clicked')
-})
 
 // Folder functions
 
