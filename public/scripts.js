@@ -26,11 +26,11 @@ function displayFolders(data) {
 
 function handleFolderSubmit(event) {
   event.preventDefault();
-  const name = getNewFolderName()
+  const $name = getNewFolderName()
 
   fetch('/api/v1/folders', {
     method: 'POST',
-    body: JSON.stringify(name),
+    body: JSON.stringify($name),
     headers: { "Content-Type": "application/json" }
   })
   .then(response => response.json())
@@ -48,15 +48,16 @@ function handleFolderSubmit(event) {
 }
 
 function handleFolderChange() {
-  const folderId = getFolderVal()
+  const $folderId = getFolderVal()
 
   removeDomNode($('.card'))
+  $('#sort-select').val('descending');
 
-  if (folderId === 0) {
+  if ($folderId === 0) {
     return
   }
 
-  fetch(`/api/v1/folders/${folderId}/links`)
+  fetch(`/api/v1/folders/${$folderId}/links`)
     .then((response) => response.json())
     .then((data) => {
       data.forEach((link) => {
@@ -113,44 +114,39 @@ function createLink() {
     .catch(error => console.log(error))
 }
 
-function shortLinkClick(event) {
-  event.preventDefault()
-  console.log('click event handler')
-}
-
 // Get input values
 
 function getNewLinkInputs() {
-  const name = $('#new-link-name').val();
-  const link = $('#new-link-link').val();
+  const $name = $('#new-link-name').val();
+  const $link = $('#new-link-link').val();
 
   return {
-    name,
-    link
+    name: $name,
+    link: $link
   }
 }
 
 function getNewFolderName() {
-  const nameValue = $('#folder-name').val();
+  const $nameValue = $('#folder-name').val();
 
-  return { name: nameValue }
+  return { name: $nameValue }
 }
 
 
 function getFolderVal(){
-  const folderId = $('#folder-select').val()
+  const $folderId = $('#folder-select').val()
 
-  return folderId
+  return $folderId
 }
 
 // Helper functions
 
-function clearInputs(input) {
-  input.val('');
+function clearInputs($input) {
+  $input.val('');
 }
 
-function removeDomNode(input) {
-  input.remove();
+function removeDomNode($input) {
+  $input.remove();
 }
 
 function validateURL(url) {
