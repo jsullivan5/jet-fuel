@@ -106,6 +106,27 @@ describe('API Routes', () => {
       });
     });
 
+    it('should return an error if user tries to duplicate folder.', (done) => {
+      chai.request(server)
+      .post('/api/v1/folders')
+      .send({
+        name: 'beers'
+      })
+      .end((err, response) => {
+        response.should.have.status(201)
+        chai.request(server)
+        .post('/api/v1/folders')
+        .send({
+          name: 'beers'
+        })
+        .end((err, response) => {
+          response.should.have.status(500);
+          response.body.error.detail.should.equal('Key (name)=(beers) already exists.');
+          done();
+        });
+      });
+    });
+
     it('should return 422 if insufficient data is provided', (done) => {
       chai.request(server)
       .post('/api/v1/folders')
@@ -202,6 +223,7 @@ describe('API Routes', () => {
         });
       });
     });
+
     it('should return 422 if insufficient data is provided', (done) => {
       chai.request(server)
       .post('/api/v1/links')
@@ -220,13 +242,13 @@ describe('API Routes', () => {
   });
 
   describe('GET /api/*/:charHash', () => {
-    it('should accept GET request to redirect', (done) => {
+    it.only('should accept GET request to redirect', (done) => {
       chai.request(server)
       .get('/api/v1/http://jt.fl/93331d9a')
       .end((err, response) => {
         response.should.have.status(200);
         done();
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});
