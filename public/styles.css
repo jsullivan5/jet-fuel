@@ -88,9 +88,13 @@ main {
   height: 50%;
 }
 
+#sort-select {
+  margin-left: 15px;
+}
+
 .user-data-wrapper {
-  display: flex;
-  justify-content: center;
+  width: 600px;
+  margin: 0 auto;
 }
 
 section {

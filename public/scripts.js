@@ -10,6 +10,7 @@ $(document).ready(() => {
 $('#folder-select').change(handleFolderChange);
 $('#new-link-submit').click(createLink);
 $('#folder-submit').click(handleFolderSubmit);
+$('#sort-select').change(reverseCardOrder)
 
 // Folder functions
 
@@ -164,4 +165,10 @@ function validateURL(url) {
 
 function formatDate(date) {
   return moment(date).format('MMMM Do YYYY, h:mm a');
+}
+
+function reverseCardOrder() {
+    const $container = $('#user-links');
+    const $cards = $container.children('.card');
+    $container.append($cards.get().reverse());
 }
