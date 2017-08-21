@@ -239,7 +239,7 @@ describe('API Routes', () => {
   });
 
   describe('GET /api/*/:charHash', () => {
-    it.only('should accept GET request to redirect', (done) => {
+    it('should accept GET request to redirect', (done) => {
       chai.request(server)
       .get('/api/v1/http://jt.fl/93331d9a')
       .end((err, response) => {
