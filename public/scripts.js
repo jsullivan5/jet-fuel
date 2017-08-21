@@ -3,7 +3,7 @@ $(document).ready(() => {
   fetch('api/v1/folders')
     .then(response => response.json())
     .then(data => displayFolders(data))
-})
+});
 
 // Event Listeners
 
@@ -22,13 +22,13 @@ function displayFolders(data) {
       <option id=${folder.id} value=${folder.id}>
         ${folder.name}
       </option>
-    `)
-  })
+    `);
+  });
 }
 
 function handleFolderSubmit(event) {
   event.preventDefault();
-  const $name = getNewFolderName()
+  const $name = getNewFolderName();
 
   fetch('/api/v1/folders', {
     method: 'POST',
@@ -44,8 +44,8 @@ function handleFolderSubmit(event) {
       </option>
     `);
     clearInputs($('#folder-name'));
-    $('#folder-select').val(`${data.id}`)
-    $('#folder-submit').prop('disabled', true)
+    $('#folder-select').val(`${data.id}`);
+    $('#folder-submit').prop('disabled', true);
   })
   .catch(error => console.log(error))
 }
