@@ -61,12 +61,16 @@ function handleFolderChange() {
 
   $('#sort-select').val('descending');
 
+
   fetch(`/api/v1/folders/${$folderId}/links`)
     .then((response) => response.json())
     .then((data) => {
       data.forEach((link) => {
         $('#user-links').prepend(generateCard(link.description, link.short_URL, link.created_at))
       });
+    })
+    .then(() => {
+      $('#user-links').focus().addClass('transition');
     })
     .catch(error => console.log(error))
 }
