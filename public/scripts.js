@@ -10,7 +10,9 @@ $(document).ready(() => {
 $('#folder-select').change(handleFolderChange);
 $('#new-link-submit').click(createLink);
 $('#folder-submit').click(handleFolderSubmit);
-$('#sort-select').change(reverseCardOrder)
+$('#sort-select').change(reverseCardOrder);
+$('#new-link-link, #new-link-name').on('input', enableLinkButton);
+$('#folder-name').on('input', enableFolderSubmit);
 
 // Folder functions
 
@@ -152,6 +154,15 @@ function reverseCardOrder() {
     const $container = $('#user-links');
     const $cards = $container.children('.card');
     $container.append($cards.get().reverse());
+}
+
+function enableLinkButton() {
+  $('#new-link-link').val() !== '' && $('#new-link-name').val() !== '' ? $('#new-link-submit').prop('disabled', false) : $('#new-link-submit').prop('disabled', true);
+}
+
+function enableFolderSubmit() {
+  console.log('working');
+  $('#folder-submit').val() !== '' ? $('#folder-submit').prop('disabled', false) : $('#folder-submit').prop('disabled', true);
 }
 
 function generateCard(description, shortUrl, date) {

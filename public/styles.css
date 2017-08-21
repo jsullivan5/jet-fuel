@@ -67,6 +67,10 @@ input[type=submit] {
   color: #1D2731;
 }
 
+input[type=submit]:disabled {
+  opacity: 0.5;
+}
+
 #folder-select {
   display: block;
   margin: 10px auto;
@@ -127,6 +131,6 @@ a {
 
 #user-links {
   width: 600px;
-  height: 50vh;
+  height: 44vh;
   overflow-y: scroll;
 }
