@@ -16,7 +16,7 @@ describe('Client Routes', () => {
     chai.request(server)
     .get('/')
     .end((err, response) => {
-      response.should.have.status(200);
+      response.should.have.status(300);
       response.should.be.html;
       response.res.text.should.have.string('Jet');
       response.res.text.should.have.string('Fuel');
