@@ -51,25 +51,18 @@ function handleFolderChange() {
   const $folderId = getFolderVal()
 
   removeDomNode($('.card'))
-  $('#sort-select').val('descending');
 
   if ($folderId === 0) {
     return
   }
 
+  $('#sort-select').val('descending');
+
   fetch(`/api/v1/folders/${$folderId}/links`)
     .then((response) => response.json())
     .then((data) => {
       data.forEach((link) => {
-        $('#user-links').prepend(`
-          <div class="card">
-            <p>${link.description}</p>
-            <a href="/${link.short_URL}" class="short-link">
-              ${link.short_URL}
-            </a>
-            <p>${formatDate(link.created_at)}</p>
-          </div>
-        `);
+        $('#user-links').prepend(generateCard(link.description, link.short_URL, link.created_at))
       });
     })
     .catch(error => console.log(error))
@@ -98,15 +91,7 @@ function createLink() {
     })
     .then(response => response.json())
     .then(link => {
-      $('#user-links').prepend(`
-          <div class="card">
-            <p>${link.description}</p>
-            <a href="/${link.short_URL}" class="short-link">
-              ${link.short_URL}
-            </a>
-            <p>${formatDate(link.created_at)}</p>
-          </div>
-        `);
+      $('#user-links').prepend(generateCard(link.description, link.short_URL, link.created_at))
       clearInputs($('#new-link-link'));
       clearInputs($('#new-link-name'));
       $('.url-error').hide();
@@ -167,4 +152,14 @@ function reverseCardOrder() {
     const $container = $('#user-links');
     const $cards = $container.children('.card');
     $container.append($cards.get().reverse());
+}
+
+function generateCard(description, shortUrl, date) {
+  return `<div class="card">
+        <p>${description}</p>
+        <a href="/${shortUrl}" class="short-link">
+          ${shortUrl}
+        </a>
+        <p>${formatDate(date)}</p>
+      </div>`
 }
