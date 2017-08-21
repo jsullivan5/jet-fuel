@@ -45,6 +45,7 @@ function handleFolderSubmit(event) {
     `);
     clearInputs($('#folder-name'));
     $('#folder-select').val(`${data.id}`)
+    $('#folder-submit').prop('disabled', true)
   })
   .catch(error => console.log(error))
 }
@@ -96,6 +97,7 @@ function createLink() {
       $('#user-links').prepend(generateCard(link.description, link.short_URL, link.created_at))
       clearInputs($('#new-link-link'));
       clearInputs($('#new-link-name'));
+      $('#new-link-submit').prop('disabled', true)
       $('.url-error').hide();
     })
     .catch(error => console.log(error))
