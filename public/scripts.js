@@ -156,10 +156,16 @@ function reverseCardOrder() {
 
 function generateCard(description, shortUrl, date) {
   return `<div class="card">
-        <p>${description}</p>
-        <a href="/${shortUrl}" class="short-link">
-          ${shortUrl}
-        </a>
-        <p>${formatDate(date)}</p>
+        <div class="card-divider-description">
+          <p>${description}</p>
+        </div>
+        <div class="card-divider">
+          <a href="/${shortUrl}" class="short-link">
+            ${shortUrl}
+          </a>
+        </div>
+        <div class="card-divider">
+          <p>${formatDate(date)}</p>
+        </div>
       </div>`
 }
