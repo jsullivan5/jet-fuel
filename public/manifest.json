@@ -1,5 +1,5 @@
 {
-  "short_name": "JetFuel",
+  "short_name": "JF",
   "name": "Jet Fuel",
   "start_url": "index.html?launcher=true",
   "theme_color": "aliceblue",
@@ -11,6 +11,16 @@
     {
       "src": "./48x48",
       "sizes": "48x48"
+    },
+    {
+    "src": "./192.jpg",
+    "sizes": "192x192"
     }
-  ]
+    {
+    "src": "./512.jpg",
+    "sizes": "512x512"
+    }
+  ],
+  "display": "standalone",
+  "background-color": "blue"
 }
